@@ -9,6 +9,7 @@
 
     $("body").append(`
     <div class="topnav">
+        <img id='logo' src='/imgs/logo.png'>
         <a href="#home" class="active" >Home</a>
         <a href="#footer">Contact</a>
         <input class = "search" type='text' placeholder=" ...seach ">
@@ -89,25 +90,15 @@ each(watches,function(el,i){
        <div class='item'>$${el.price}</div>
        <div class='item'>${el.stock} in stock</div>
   <div class='item'><button class="addToCart" onClick='OpenPopUp()'><img  id="addToCartImg" src='/imgs/addToCart.png'></button>
-  </div></div>
-       `})
-   
-   } 
+  </div></div>`})} 
 
-    function OpenPopUp(){
-      for (let i = 0; i < watches.length; i++) {  
 
-        if(watches[i].stock !== 0){
+// var addToCart = document.getElementsByClassName('addtoCart')[0]
+      
 
-          window.open('./pop/popUp.html','Cart','width=800,height=600')
-        }
-        else {
-          window.open('./pop/popUp.html','Cart','width=800,height=600')
-        }
-      }
-   
+  function OpenPopUp() {
+    window.open('./pop/popUp.html','home','width:600px,height:600px')
   }
-
 
    
   // Creating class Cart to use it ...
@@ -116,15 +107,15 @@ each(watches,function(el,i){
 
     var cart = {}
 
-      cart.listOfWatches       = []
-      cart.listOFavorites      = []
-      cart.addToCartByBrand    = addToCartByBrand 
-      cart.addToCartByHouse    = addToCartByHouse
-      cart.removeFromCart      = removeFromCart
-      cart.displayCart         = displayCart   
-      cart.addtoFavorite       = addtoFavorite
-      cart.removeFromFavorite  = removeFromFavorite
-      cart.displayFavorites    = displayFavorites
+      cart.listOfWatches       =   []
+      cart.listOFavorites      =   []
+      cart.addToCartByBrand    =   addToCartByBrand 
+      cart.addToCartByHouse    =   addToCartByHouse
+      cart.removeFromCart      =   removeFromCart
+      cart.displayCart         =   displayCart   
+      cart.addtoFavorite       =   addtoFavorite
+      cart.removeFromFavorite  =   removeFromFavorite
+      cart.displayFavorites    =   displayFavorites
 
     return cart 
 

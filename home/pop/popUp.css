@@ -1,4 +1,18 @@
-body {
-    background-image: url('../../imgs/nproduct.png');
-    background-size: 950px;
+#container {
+    display: flex;
+    justify-content: center;
+    
 }
+
+.btns {
+    background-color: beige;
+    padding: 10px;
+    margin: 10px;
+    height: 200px;
+    width: 200px;
+}
+
+.btns:hover {
+    transform: scale(0.7);
+    cursor: pointer;
+} 
