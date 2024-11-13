@@ -2,6 +2,10 @@
 $( document ).ready(function() {
     $("body").css({'background-color': '#d7d7d7 '})
 
+
+   // I create the navigation bar using div instead of nav 😁!
+
+
     $("body").append(`
     <div class="topnav">
         <a href="#home" class="active" >Home</a>
@@ -9,6 +13,9 @@ $( document ).ready(function() {
         <input id = "search" type='text' placeholder=" ...seach ">
      </div>`
     )
+
+
+ // I added the footer at the bottom page without using the footer tag , just using div safer for element division 😁!
 
     $("body").append(`
         <div id="footer">
@@ -20,15 +27,23 @@ $( document ).ready(function() {
         )
 
 
+
+ // In here I used the jquerry build in function .on('keypress') so that when I use the enter key I filter the array
+ // of watches either by its brand or by the house 😁!
+
 var search = $("#search")
 
     search.on('keypress', function(event) {
+      
         if (event.key === 'Enter') {
             var value = search.val().toLowerCase()
             var filteredWatches = filter(watches, function(el) {
                 return el.brand.toLowerCase().includes(value) || el.house.toLowerCase().includes(value)
             })
-            DisplayFilteredWatches(filteredWatches)
+
+            // here I invoqued the function so I can update the container with the new filtred watches 😁!
+
+            DisplayFilteredWatches(filteredWatches) 
         }
     })
         
@@ -41,51 +56,49 @@ var cont = document.getElementById('container')
  
 
 
+ // I display all available watches in the home page 😁!
+
+
 each(watches,function(el,i){
+
     cont.innerHTML+=`<div id ='items'>
   <div class='item'>${el.house}</div>
   <div class='item'>${el.brand}</div>
   <div class='item'><img src="${el.img}"></div>
   <div class='item'>$${el.price}</div>
-  <div class='item'>${el.stock} in stock</div></div>`
+  <div class='item'>${el.stock} in stock</div>
+  <div class='item'><button id="addToCart"><img  id="addToCartImg" src='/imgs/addToCart.png'></button></div></div>`
+
 })
 
 
-// because I added the search in the Jquery ready function ... conflict in the time of execution so I added it to the the jQuerry
-
-// var search = document.getElementById('search')
-
-// search.addEventListener('keypress', function(event) {
-
-//     if (event.key === 'Enter') {
-  
-//       var value = search.value.toLowerCase()
-  
-//       var filtredWatches = filter(watches,function(el) {
+    function addWatchToCart(){
         
-//         return el.brand.toLowerCase().includes(value) || el.house.toLowerCase().includes(value)
-  
-//       })
-      
-//       DisplayFilteredWatches(filtredWatches)
 
-//     }
-//   })
+    }
 
-  
-  function DisplayFilteredWatches(watches){
-    cont.innerHTML = ''
-   each(watches,function(el){
-     
-     cont.innerHTML+=`<div id ='items'>
-     <div class='item'>${el.house}</div>
-     <div class='item'>${el.brand}</div>
-     <div class='item'><img src="${el.img}"></div>
-     <div class='item'>$${el.price}</div>
-     <div class='item'>${el.stock} in stock</div></div>`})
- 
- } 
 
+    // in here I empty the cont then replaced it again with the items so I can update the container whenever I want 😁!
+
+
+
+    function DisplayFilteredWatches(watches){
+      cont.innerHTML = ''
+     each(watches,function(el){
+       
+       cont.innerHTML+=`<div id ='items'>
+       <div class='item'>${el.house}</div>
+       <div class='item'>${el.brand}</div>
+       <div class='item'><img src="${el.img}"></div>
+       <div class='item'>$${el.price}</div>
+       <div class='item'>${el.stock} in stock</div>
+       <div class='item'><button id="addToCart"><img  id="addToCartImg" src='/imgs/addToCart.png'></button></div></div>
+       `})
+   
+   } 
+
+
+  // higher order function for use 😁!
 
 
 

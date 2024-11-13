@@ -53,16 +53,16 @@
     text-align: center;
     border: black solid 1px;
     border-radius: 20px;
-    transition: transform 0.3s ease;
+    /* transition: transform 0.3s ease; */
     background: rgba(255, 255, 255, 0.18);
    
 
 }
 
-#items:hover {
+/* #items:hover {
     transform: scale(0.7);
     cursor: pointer;
-}
+} */
 
 .item {
 
@@ -78,6 +78,25 @@
     height: 100px;
 
 }
+
+
+#addToCartImg {
+
+    width: 100px;
+    height: 100px;
+
+}
+#addToCart {
+    
+  border-radius: 50px;
+  transition: transform 0.3s ease;
+
+
+}
+#addToCart:hover {
+    transform: scale(0.7);
+    cursor: pointer;
+} 
 
 
 
