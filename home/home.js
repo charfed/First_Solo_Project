@@ -1,5 +1,6 @@
 
-$( document ).ready(function() {
+ $( document ).ready(function() {
+
     $("body").css({'background-color': '#d7d7d7 '})
 
 
@@ -45,21 +46,19 @@ var search = $(".search")
 
             // here I invoqued the function so I can update the container with the new filtred watches 😁!
 
-            DisplayFilteredWatches(filteredWatches) 
+            UpdateWatches(filteredWatches) 
         }
     })
         
 })
 
+ var watches = [{brand : 'Datejust 36',house : 'Rolex',img:'/imgs/1.png',price:23.995 ,stock :5},{brand : 'Datejust 41',house : 'Rolex',img:'/imgs/2.png',price:22.920,stock :2},{brand : 'Datejust Gold/Steel',house : 'Rolex',img:'/imgs/3.png',price:20.580,stock :7},{brand : 'Datejust Diamonds',house : 'Rolex',img:'/imgs/4.png',price:19.995,stock :0},{brand : 'Lady-Datejust',house : 'Rolex',img:'/imgs/5.png',price:25.995,stock :2},   {brand : 'Speedmaster Pro',house : 'Omega',img:'/imgs/6.png',price:7.995,stock :4},{brand : 'Speedmaster Reduce',house : 'Omega',img:'/imgs/7.png',price:5.495,stock :0},{brand : 'Speedmaster Race',house : 'Omega',img:'/imgs/8.png',price:11.205,stock :1},{brand : 'Speedmaster P54',house : 'Omega',img:'/imgs/9.png',price:4.875,stock :10},{brand : 'Speedmaster Vintage',house : 'Omega',img:'/imgs/10.png',price:13.875,stock :9},{brand : 'Rolay Oak SelfWind 41mn',house : 'Audemars Piguet',img:'/imgs/11.png',price:28.683,stock :5},{brand : 'Rolay Oak SelfWind 37mn',house : 'Audemars Piguet',img:'/imgs/12.png',price:29.995,stock :1},{brand : 'Rolay Oak Chronograph',house : 'Audemars Piguet',img:'/imgs/13.png',price:26.955,stock :2},{brand : 'Rolay Oak YellowGold',house : 'Audemars Piguet',img:'/imgs/14.png',price:13.050,stock :0},{brand : 'Rolay Oak Steel',house : 'Audemars Piguet',img:'/imgs/15.png',price:8.750,stock :3},{brand : 'Nautilus Steel 40mm',house : 'Patek Philippe',img:'/imgs/16.png',price:71.750,stock :1},{brand : 'Nautilus Moon phase',house : 'Patek Philippe',img:'/imgs/17.png',price:68.899,stock :2},{brand : 'Nautilus Chronograph',house : 'Patek Philippe',img:'/imgs/18.png',price:92.995,stock :2},{brand : 'Nautilus Ladies',house : 'Patek Philippe',img:'/imgs/19.png',price:57.495,stock :3},{brand : 'Nautilus White gold',house : 'Patek Philippe',img:'/imgs/20.png',price:37.729,stock :6},{brand : 'Nautilus 37mm',house : 'Patek Philippe',img:'/imgs/21.png',price:25.825,stock :4}]  
 
-var watches = [{brand : 'Datejust 36',house : 'Rolex',img:'/imgs/1.png',price:23.995 ,stock :5},{brand : 'Datejust 41',house : 'Rolex',img:'/imgs/2.png',price:22.920,stock :2},{brand : 'Datejust Gold/Steel',house : 'Rolex',img:'/imgs/3.png',price:20.580,stock :7},{brand : 'Datejust Diamonds',house : 'Rolex',img:'/imgs/4.png',price:19.995,stock :0},{brand : 'Lady-Datejust',house : 'Rolex',img:'/imgs/5.png',price:25.995,stock :2},   {brand : 'Speedmaster Pro',house : 'Omega',img:'/imgs/6.png',price:7.995,stock :4},{brand : 'Speedmaster Reduce',house : 'Omega',img:'/imgs/7.png',price:5.495,stock :0},{brand : 'Speedmaster Race',house : 'Omega',img:'/imgs/8.png',price:11.205,stock :1},{brand : 'Speedmaster P54',house : 'Omega',img:'/imgs/9.png',price:4.875,stock :10},{brand : 'Speedmaster Vintage',house : 'Omega',img:'/imgs/10.png',price:13.875,stock :9},{brand : 'Rolay Oak SelfWind 41mn',house : 'Audemars Piguet',img:'/imgs/11.png',price:28.683,stock :5},{brand : 'Rolay Oak SelfWind 37mn',house : 'Audemars Piguet',img:'/imgs/12.png',price:29.995,stock :1},{brand : 'Rolay Oak Chronograph',house : 'Audemars Piguet',img:'/imgs/13.png',price:26.955,stock :2},{brand : 'Rolay Oak YellowGold',house : 'Audemars Piguet',img:'/imgs/14.png',price:13.050,stock :0},{brand : 'Rolay Oak Steel',house : 'Audemars Piguet',img:'/imgs/15.png',price:8.750,stock :3},{brand : 'Nautilus Steel 40mm',house : 'Patek Philippe',img:'/imgs/16.png',price:71.750,stock :1},{brand : 'Nautilus Moon phase',house : 'Patek Philippe',img:'/imgs/17.png',price:68.899,stock :2},{brand : 'Nautilus Chronograph',house : 'Patek Philippe',img:'/imgs/18.png',price:92.995,stock :2},{brand : 'Nautilus Ladies',house : 'Patek Philippe',img:'/imgs/19.png',price:57.495,stock :3},{brand : 'Nautilus White gold',house : 'Patek Philippe',img:'/imgs/20.png',price:37.729,stock :6},{brand : 'Nautilus 37mm',house : 'Patek Philippe',img:'/imgs/21.png',price:25.825,stock :4}]  
-
-var cont = document.getElementById('container')
+ var cont = document.getElementById('container')
  
 
 
  // I display all available watches in the home page 😁!
-
 
 each(watches,function(el,i){
 
@@ -69,7 +68,7 @@ each(watches,function(el,i){
   <div class='item'><img src="${el.img}"></div>
   <div class='item'>$${el.price}</div>
   <div class='item'>${el.stock} in stock</div>
-  <div class='item'><button class="addToCart"><img  id="addToCartImg" src='/imgs/addToCart.png'></button></div>
+  <div class='item'><button class="addToCart" onClick='OpenPopUp()'><img  id="addToCartImg" src='/imgs/addToCart.png'></button></div>
   </div>`
 
 })
@@ -79,7 +78,7 @@ each(watches,function(el,i){
 
 
 
-    function DisplayFilteredWatches(watches){
+    function UpdateWatches(watches){
       cont.innerHTML = ''
      each(watches,function(el){
        
@@ -89,14 +88,31 @@ each(watches,function(el,i){
        <div class='item'><img src="${el.img}"></div>
        <div class='item'>$${el.price}</div>
        <div class='item'>${el.stock} in stock</div>
-       <div class='item'><button class="addToCart"><img  id="addToCartImg" src='/imgs/addToCart.png'></button></div></div>
+  <div class='item'><button class="addToCart" onClick='OpenPopUp()'><img  id="addToCartImg" src='/imgs/addToCart.png'></button>
+  </div></div>
        `})
    
    } 
 
+    function OpenPopUp(){
+      for (let i = 0; i < watches.length; i++) {  
+
+        if(watches[i].stock !== 0){
+
+          window.open('./pop/popUp.html','Cart','width=800,height=600')
+        }
+        else {
+          window.open('./pop/popUp.html','Cart','width=800,height=600')
+        }
+      }
+   
+  }
+
 
    
-  function Cart (){
+  // Creating class Cart to use it ...
+  
+   function Cart (){
 
     var cart = {}
 
@@ -111,11 +127,10 @@ each(watches,function(el,i){
       cart.displayFavorites    = displayFavorites
 
     return cart 
+
   }
 
-
-
-  var addToCartByBrand  = function(brand){
+   var addToCartByBrand  = function(brand){
     var newEl = null
     each(watches,function(el){
       if(el.brand.toLowerCase().includes(brand.toLowerCase())){
@@ -125,14 +140,13 @@ each(watches,function(el,i){
           this.listOfWatches.push(newEl)
           el.stock--
         }
-        DisplayFilteredWatches(watches) 
+        UpdateWatches(watches) 
       }
     })
   }
 
-  
 
-  var addToCartByHouse  = function(house){
+   var addToCartByHouse  = function(house){
     var newEl = null
     each(watches,function(el){
       if(el.house.toLowerCase().includes(house.toLowerCase())){
@@ -142,28 +156,26 @@ each(watches,function(el,i){
           this.listOfWatches.push(newEl)
           el.stock--
         }
-        DisplayFilteredWatches(watches) 
+        UpdateWatches(watches) 
       }
     })
   }
 
   
-  var removeFromCart = function(){
+   var removeFromCart = function(){
     this.listOfWatches.shift()
     el.stock++
+
   }
 
 
-  // var displayCart = function(){
-  //   return 
+   var displayCart = function(){
+    return this.listOfWatches
 
-  // }
-
-
+  }
 
 
-
-  var addtoFavorite = function(brand){
+   var addtoFavorite = function(brand){
       each(watches,function(el){
       if(el.brand.toLowerCase().includes(brand.toLowerCase())){
           this.listOFavorites.push({brand : el.brand , house : el.house, img : el.house,price: el.price})
@@ -171,15 +183,24 @@ each(watches,function(el,i){
     })
   }
   
+   var removeFromFavorite = function() {
+    this.listOFavorites.shift()
+
+  }
 
 
+
+   var displayFavorites = function(){
+    return this.listOFavorites
+
+  }
 
 
   // higher order function for use 😁!
 
 
 
-function each(coll, f) {
+   function each(coll, f) {
     if (Array.isArray(coll)) {
       for (var i = 0; i < coll.length; i++) {
         f(coll[i], i);
@@ -191,7 +212,7 @@ function each(coll, f) {
     }
   }
   
-  function filter(array, predicate) {
+   function filter(array, predicate) {
     var acc = [];
     each(array, function (element, i) {
       if (predicate(element, i)) {
@@ -201,7 +222,7 @@ function each(coll, f) {
     return acc;
   }
   
-  function map(array, func) {
+   function map(array, func) {
     var acc = [];
     each(array, function (element, i) {
       acc.push(func(element, i));
@@ -209,7 +230,7 @@ function each(coll, f) {
     return acc;
   }
   
-  function reduce(array, f, acc) {
+   function reduce(array, f, acc) {
     if (acc === undefined) {
       acc = array[0];
       array = array.slice(1);
@@ -219,3 +240,7 @@ function each(coll, f) {
     });
     return acc;
   }
+
+
+
+
