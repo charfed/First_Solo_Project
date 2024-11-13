@@ -86,14 +86,14 @@
     height: 100px;
 
 }
-#addToCart {
+.addToCart {
     
   border-radius: 50px;
   transition: transform 0.3s ease;
 
 
 }
-#addToCart:hover {
+.addToCart:hover {
     transform: scale(0.7);
     cursor: pointer;
 } 

@@ -10,7 +10,7 @@ $( document ).ready(function() {
     <div class="topnav">
         <a href="#home" class="active" >Home</a>
         <a href="#footer">Contact</a>
-        <input id = "search" type='text' placeholder=" ...seach ">
+        <input class = "search" type='text' placeholder=" ...seach ">
      </div>`
     )
 
@@ -31,7 +31,9 @@ $( document ).ready(function() {
  // In here I used the jquerry build in function .on('keypress') so that when I use the enter key I filter the array
  // of watches either by its brand or by the house 😁!
 
-var search = $("#search")
+
+
+var search = $(".search")
 
     search.on('keypress', function(event) {
       
@@ -67,18 +69,13 @@ each(watches,function(el,i){
   <div class='item'><img src="${el.img}"></div>
   <div class='item'>$${el.price}</div>
   <div class='item'>${el.stock} in stock</div>
-  <div class='item'><button id="addToCart"><img  id="addToCartImg" src='/imgs/addToCart.png'></button></div></div>`
+  <div class='item'><button class="addToCart"><img  id="addToCartImg" src='/imgs/addToCart.png'></button></div>
+  </div>`
 
 })
 
 
-    function addWatchToCart(){
-        
-
-    }
-
-
-    // in here I empty the cont then replaced it again with the items so I can update the container whenever I want 😁!
+  // in here I empty the cont then replaced it again with the items so I can update the container whenever I want 😁!
 
 
 
@@ -92,10 +89,90 @@ each(watches,function(el,i){
        <div class='item'><img src="${el.img}"></div>
        <div class='item'>$${el.price}</div>
        <div class='item'>${el.stock} in stock</div>
-       <div class='item'><button id="addToCart"><img  id="addToCartImg" src='/imgs/addToCart.png'></button></div></div>
+       <div class='item'><button class="addToCart"><img  id="addToCartImg" src='/imgs/addToCart.png'></button></div></div>
        `})
    
    } 
+
+
+   
+  function Cart (){
+
+    var cart = {}
+
+      cart.listOfWatches       = []
+      cart.listOFavorites      = []
+      cart.addToCartByBrand    = addToCartByBrand 
+      cart.addToCartByHouse    = addToCartByHouse
+      cart.removeFromCart      = removeFromCart
+      cart.displayCart         = displayCart   
+      cart.addtoFavorite       = addtoFavorite
+      cart.removeFromFavorite  = removeFromFavorite
+      cart.displayFavorites    = displayFavorites
+
+    return cart 
+  }
+
+
+
+  var addToCartByBrand  = function(brand){
+    var newEl = null
+    each(watches,function(el){
+      if(el.brand.toLowerCase().includes(brand.toLowerCase())){
+
+        if(el.stock > 0){
+          newEl = {brand : el.brand,house : el.house, img : el.house,price: el.price}
+          this.listOfWatches.push(newEl)
+          el.stock--
+        }
+        DisplayFilteredWatches(watches) 
+      }
+    })
+  }
+
+  
+
+  var addToCartByHouse  = function(house){
+    var newEl = null
+    each(watches,function(el){
+      if(el.house.toLowerCase().includes(house.toLowerCase())){
+
+        if(el.stock > 0){
+          newEl = {brand : el.brand , house : el.house, img : el.house,price: el.price}
+          this.listOfWatches.push(newEl)
+          el.stock--
+        }
+        DisplayFilteredWatches(watches) 
+      }
+    })
+  }
+
+  
+  var removeFromCart = function(){
+    this.listOfWatches.shift()
+    el.stock++
+  }
+
+
+  // var displayCart = function(){
+  //   return 
+
+  // }
+
+
+
+
+
+  var addtoFavorite = function(brand){
+      each(watches,function(el){
+      if(el.brand.toLowerCase().includes(brand.toLowerCase())){
+          this.listOFavorites.push({brand : el.brand , house : el.house, img : el.house,price: el.price})
+      }
+    })
+  }
+  
+
+
 
 
   // higher order function for use 😁!
