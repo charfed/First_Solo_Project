@@ -75,7 +75,7 @@ each(watches,function(el,i){
 })
 
 
-  // in here I empty the cont then replaced it again with the items so I can update the container whenever I want 😁!
+  // in here I empty the container then replaced it again with the items so I can update the container whenever I want 😁!
 
 
 
@@ -101,7 +101,7 @@ each(watches,function(el,i){
   }
 
    
-  // Creating class Cart to use it ...
+  // Creating class Cart to use it ... wip 
   
    function Cart (){
 
