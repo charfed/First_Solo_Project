@@ -3,9 +3,7 @@
 
     $("body").css({'background-color': '#d7d7d7 '})
 
-
    // I create the navigation bar using div instead of nav 😁!
-
 
     $("body").append(`
     <div class="topnav">
@@ -16,7 +14,7 @@
      </div>`
     )
 
-
+    
  // I added the footer at the bottom page without using the footer tag , just using div safer for element division 😁!
 
     $("body").append(`
@@ -29,11 +27,8 @@
         )
 
 
-
  // In here I used the jquerry build in function .on('keypress') so that when I use the enter key I filter the array
  // of watches either by its brand or by the house 😁!
-
-
 
 var search = $(".search")
 
@@ -57,8 +52,6 @@ var search = $(".search")
 
  var cont = document.getElementById('container')
  
-
-
  // I display all available watches in the home page 😁!
 
 each(watches,function(el,i){
@@ -74,10 +67,7 @@ each(watches,function(el,i){
 
 })
 
-
   // in here I empty the container then replaced it again with the items so I can update the container whenever I want 😁!
-
-
 
     function UpdateWatches(watches){
       cont.innerHTML = ''
@@ -92,10 +82,8 @@ each(watches,function(el,i){
   <div class='item'><button class="addToCart" onClick='OpenPopUp()'><img  id="addToCartImg" src='/imgs/addToCart.png'></button>
   </div></div>`})} 
 
-
 // var addToCart = document.getElementsByClassName('addtoCart')[0]
       
-
   function OpenPopUp() {
     window.open('./pop/popUp.html','home','width:600px,height:600px')
   }
@@ -186,10 +174,7 @@ each(watches,function(el,i){
 
   }
 
-
   // higher order function for use 😁!
-
-
 
    function each(coll, f) {
     if (Array.isArray(coll)) {
